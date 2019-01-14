@@ -3,9 +3,10 @@ import InputStyle from "../src/styles/InputStyle";
 
 class AddField extends Component {
   render() {
+    const { getInputValue } = this.props;
     return (
       <form>
-        <InputStyle placeholder="Add to List" onChange={this.props.onchange}/>
+        <InputStyle placeholder="Add to List" onChange={getInputValue}/>
       </form>
     );
   }

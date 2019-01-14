@@ -46,21 +46,23 @@ class ToDoList extends Component {
     }
 
   render() {
-    let filteredToDos = this.state.toDoItems.filter(
-      item => item.title.toLowerCase().indexOf(this.state.query) !== -1
+    const {query, loading, toDoItems} = this.state;
+    
+    let filteredToDos = toDoItems.filter(
+      item => item.title.toLowerCase().indexOf(query) !== -1
     );
     return (
       <div>
         <Link to="/">
           <Button text="Add More Items" />
         </Link>
-        <SearchBox onchange={this.handleInputChange} query={this.state.query} />
+        <SearchBox handleInputChange={this.handleInputChange} query={query} />
         <ToDoListStyle>
           {filteredToDos.map((item, index) => (
             <ToDoItem key={index} items={item.title} removeItem={this.removeItem(item.id)}/>
           ))}
         </ToDoListStyle>
-        {this.state.loading && <div>Loading ...</div>}
+        {loading && <div>Loading ...</div>}
       </div>
     );
   }

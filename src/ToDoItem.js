@@ -40,6 +40,7 @@ class ToDoItem extends Component {
 
     render() {
     const { items, removeItem } = this.props;
+    
     return (
       <div>
         <ToDoItemStyle onClick={removeItem}>{items} 

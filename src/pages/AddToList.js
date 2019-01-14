@@ -22,7 +22,6 @@ class AddToList extends Component {
         this.setState({
             addItem: event.target.value
         })   
-        
     }
 
     addItemToList = () => {
@@ -45,14 +44,15 @@ class AddToList extends Component {
 
 
   render() {
+    const { addItem } = this.state;
     return (
       <div>
         <MainHeading>What is your main focus for today?</MainHeading>
-        <AddField onchange={this.getInputValue} />
+        <AddField getInputValue={this.getInputValue} />
         <Button
             addItem={this.addItemToList}
             text="Add to List"
-            disabled={this.state.addItem === ''? true : false}
+            disabled={addItem === ''? true : false}
         />
       </div>
     );

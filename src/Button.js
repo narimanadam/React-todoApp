@@ -24,10 +24,10 @@ const ButtonStyle = styled.button`
 
 class Button extends Component {
   render() {
-    const { text } = this.props;
+    const { text, addItem, disabled } = this.props;
     return (
       <div>
-        <ButtonStyle disabled={this.props.disabled} onClick={this.props.addItem}>{text}</ButtonStyle>
+        <ButtonStyle disabled={disabled} onClick={addItem}>{text}</ButtonStyle>
       </div>
     );
   }

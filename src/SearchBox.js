@@ -3,14 +3,15 @@ import InputStyle from "../src/styles/InputStyle";
 
 class SearchBox extends Component {
   render() {
+    const {query, handleInputChange} = this.props;
     return (
       <form>
         <InputStyle
           type="text"
           placeholder="Search"
-          value={this.props.query}
-          onChange={this.props.onchange}
-          onBlur={this.props.onchange}
+          value={query}
+          onChange={handleInputChange}
+          onBlur={handleInputChange}
         />
       </form>
     );
