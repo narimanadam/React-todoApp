@@ -47,8 +47,10 @@ class ToDoList extends Component {
   }
 
   render() {
-    let filteredToDos = this.state.toDoItems.filter(
-      item => item.title.toLowerCase().indexOf(this.state.query) !== -1
+    const { query, loading, toDoItems } = this.state;
+
+    let filteredToDos = toDoItems.filter(
+      item => item.title.toLowerCase().indexOf(query) !== -1
     );
     const { query, loading } = this.state;
 
