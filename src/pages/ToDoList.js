@@ -52,7 +52,6 @@ class ToDoList extends Component {
     let filteredToDos = toDoItems.filter(
       item => item.title.toLowerCase().indexOf(query) !== -1
     );
-    const { query, loading } = this.state;
 
     return (
       <div>
