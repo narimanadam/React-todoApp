@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import styled from "styled-components";
 
-import AddField from "../AddField";
-import Button from "../Button";
+import Button from "../components/Button";
+import InputField from "../components/InputField";
 
 const MainHeading = styled.h2`
   font-size: 30px;
@@ -17,12 +17,10 @@ class AddToList extends Component {
         addItem: ""
     };
 
-  
-    getInputValue = (event) => {
+    getInputValue = ({ target: { value } }) => {
         this.setState({
-            addItem: event.target.value
-        })   
-        
+            addItem: value
+        })
     }
 
     addItemToList = () => {
@@ -34,29 +32,29 @@ class AddToList extends Component {
             body: JSON.stringify({
                 title: this.state.addItem
             })
-        }).then(function (data) {  
-            console.log('Request success: ', data);  
+        }).then(function (data) {
+            console.log('Request success: ', data);
             navigate(`/list`)
-        })  
-        .catch(function (error) {  
-            console.log('Request failure: ', error);  
+        }).catch(function (error) {
+            console.log('Request failure: ', error);
         });
     }
 
 
-  render() {
-    return (
-      <div>
-        <MainHeading>What is your main focus for today?</MainHeading>
-        <AddField onchange={this.getInputValue} />
-        <Button
-            addItem={this.addItemToList}
-            text="Add to List"
-            disabled={this.state.addItem === ''? true : false}
-        />
-      </div>
-    );
-  }
+    render() {
+        const { addItem } = this.state;
+        return (
+            <div>
+                <MainHeading>What is your main focus for today?</MainHeading>
+                <InputField type="text" placeholder="What are your plans?" onchange={this.getInputValue} />
+                <Button
+                    onclick={this.addItemToList}
+                    text="Add to List"
+                    disabled={addItem === '' ? true : false}
+                />
+            </div>
+        );
+    }
 }
 
 export default AddToList;
